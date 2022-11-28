@@ -5,7 +5,7 @@ require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 const methodOverride = require('method-override');
-const animalRouter = require('./controller/animals')
+const animalRouter = require('./controller/animal')
 
 const app = express();
 
@@ -23,6 +23,8 @@ app.use('/public', express.static('public'));
 // Server Routes
 // ---------------------------------------
 app.use('/', animalRouter);
+
+app.use('/animal', animalRouter)
 
 
 // ---------------------------------------
