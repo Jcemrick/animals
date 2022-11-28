@@ -22,7 +22,9 @@ app.use('/public', express.static('public'));
 // ---------------------------------------
 // Server Routes
 // ---------------------------------------
-app.use('/', animalRouter);
+app.get('/', (req, res) => {
+    res.send("Server is working")
+})
 
 app.use('/animal', animalRouter)
 
