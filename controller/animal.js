@@ -48,7 +48,10 @@ router.get('/new', (req, res) => {
 
 
 // Destroy Route
-
+router.delete('/:id', async (req, res) => {
+    await Animal.findByIdAndRemove(req.params.id)
+    res.redirect('/animal')
+})
 
 
 
@@ -60,9 +63,8 @@ router.get('/new', (req, res) => {
 // Create Route
 router.post('/', async (req, res) => {
 
-
-    await animal.create(req.body).catch((error) => errorHandler(error, res));
-    res.json(animals)
+    req.body.extinct = Boolean(req.body.extinct)
+    await Animal.create(req.body).catch((error) => errorHandler(error, res));
 
     res.redirect('/animal')
 })
