@@ -49,14 +49,18 @@ router.get('/new', (req, res) => {
 
 // Destroy Route
 router.delete('/:id', async (req, res) => {
-    await Animal.findByIdAndRemove(req.params.id)
+    await Animal.findByIdAndRemove(req.params.id).catch((error) => errorHandler(error, res))
     res.redirect('/animal')
 })
 
 
 
 // Update Route
-
+router.put('/:id', async (req, res) =>{
+    req.body.extinct = Boolean(req.body.extinct)
+    await Animal.findByIdAndUpdate(req.params.id, req.body)
+    res.redirect('/animal')
+})
 
 
 
@@ -72,13 +76,16 @@ router.post('/', async (req, res) => {
 
 
 // Edit Route
-
+router.get('/:id/edit', async (req, res) => {
+    const animal = await Animal.findById(req.params.id).catch((error) => errorHandler(error, res))
+    res.render('animal/edit.ejs', {animal})
+})
 
 
 
 // Show Route
 router.get('/:id', async (req, res) => {
-    const animal = await Animal.findById(req.params.id)
+    const animal = await Animal.findById(req.params.id).catch((error) => errorHandler(error, res))
     res.render('animal/show.ejs', {animal})
 })
 
