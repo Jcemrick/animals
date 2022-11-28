@@ -41,7 +41,9 @@ router.get('/', async (req, res) => {
 
 
 // New Route
-
+router.get('/new', (req, res) => {
+    res.render('animal/new.ejs')
+})
 
 
 
@@ -56,7 +58,14 @@ router.get('/', async (req, res) => {
 
 
 // Create Route
+router.post('/', async (req, res) => {
 
+
+    await animal.create(req.body).catch((error) => errorHandler(error, res));
+    res.json(animals)
+
+    res.redirect('/animal')
+})
 
 
 
