@@ -12,8 +12,7 @@ const animalSchema = new mongoose.Schema(
         extinct: Boolean,
         location: String,
         lifeExpectancy: Number
-}
-);
+}, {timestamps: true});
 
 // ---------------------------------------
 // Schema - Model

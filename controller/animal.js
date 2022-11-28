@@ -28,7 +28,7 @@ router.get('/seed', async (req, res) => {
         { species: "Tiger", extinct: false, location: "Asia", lifeExpectancy: 10},
         { species: "Woolly Mammoth", extinct: true, location: "Asia", lifeExpectancy: 60},
         { species: "Orca", extinct: false, location: "Ocean", lifeExpectancy: 50}
-    ]);
+    ]).catch((error) => errorHandler(error, res));
     res.json(animals)
 })
 
@@ -66,7 +66,10 @@ router.get('/', async (req, res) => {
 
 
 // Show Route
-
+router.get('/:id', async (req, res) => {
+    const animal = await Animal.findById(req.params.id)
+    res.render('animal/show.ejs', {animal})
+})
 
 
 // ---------------------------------------
