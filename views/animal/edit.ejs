@@ -1,0 +1,10 @@
+<h1> Update <%= animal.species %> </h1>
+
+<form action="/animal/<%= animal._id %>?_method=PUT" method="POST">
+    <input type="text" name="species" placeholder="Species" value="<%= animal.species%>"><br>
+    Is this Animal Extinct?<br>
+    Yes:<input type="checkbox" name="extinct" <%= animal.extinct ? "checked": "" %>><br>
+    <input type="text" name="location" placeholder="Animal Location" value="<%= animal.location%>"><br>
+    <input type="number" name="lifeExpectancy" placeholder="Life Span" value="<%= animal.lifeExpectancy%>"><br>
+    <input type="submit" value="Update Animal">
+</form>
