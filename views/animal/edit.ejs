@@ -1,5 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../partials/head.ejs') %>
+</head>
+<body>
+<div class="container">
 <h1> Update <%= animal.species %> </h1>
-
 <form action="/animal/<%= animal._id %>?_method=PUT" method="POST">
     <input type="text" name="species" placeholder="Species" value="<%= animal.species%>"><br>
     Is this Animal Extinct?<br>
@@ -8,3 +14,5 @@
     <input type="number" name="lifeExpectancy" placeholder="Life Span" value="<%= animal.lifeExpectancy%>"><br>
     <input type="submit" value="Update Animal">
 </form>
+</div>
+</body>

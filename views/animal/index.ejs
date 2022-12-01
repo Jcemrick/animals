@@ -1,4 +1,12 @@
-<h1>List of Animals</h1>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head.ejs') %>
+</head>
+<body>
+<div class="container">
+    <h1>List of Animals</h1>
     <% animals.forEach((animal, index) => { %>
     <ul>
         <a href="/animal/<%= animal._id %>">
@@ -10,3 +18,5 @@
     <% }) %>
 
     <a href="/animal/new"><button>Add New Animal</button></a>
+</div>
+</body>

@@ -23,7 +23,7 @@ app.use('/public', express.static('public'));
 // Server Routes
 // ---------------------------------------
 app.get('/', (req, res) => {
-    res.send("Server is working")
+    res.redirect('/animal')
 })
 
 app.use('/animal', animalRouter)
